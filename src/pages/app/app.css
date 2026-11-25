@@ -20,7 +20,7 @@
   --rail-active: rgb(255 255 255 / 9%);
   /* Active nav label and avatar initials on the rail. */
   --rail-strong: #ffffff;
-  --ink: #0b1f1c;
+  --ink: #08594f;
   /* Text and icons drawn on top of --ink (primary buttons, active chips). */
   --on-ink: #ffffff;
   --mint: #d5f0e4;
