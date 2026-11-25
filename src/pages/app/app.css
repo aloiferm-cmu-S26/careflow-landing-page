@@ -18,7 +18,11 @@
   --rail-text: rgb(255 255 255 / 76%);
   --rail-muted: rgb(255 255 255 / 46%);
   --rail-active: rgb(255 255 255 / 9%);
+  /* Active nav label and avatar initials on the rail. */
+  --rail-strong: #ffffff;
   --ink: #0b1f1c;
+  /* Text and icons drawn on top of --ink (primary buttons, active chips). */
+  --on-ink: #ffffff;
   --mint: #d5f0e4;
   --peach: #fdebdd;
   --teal: #00695e;
@@ -34,6 +38,8 @@
   --rail-w: 196px;
   --radius-card: 10px;
   --radius-button: 8px;
+  /* Base color for modal backdrops and shadows. */
+  --scrim: #0a1f1c;
   --shadow-float: 0 10px 16px rgb(10 31 28 / 18%);
 }
 

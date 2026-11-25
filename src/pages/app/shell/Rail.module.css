@@ -39,12 +39,12 @@
 }
 
 .item:hover {
-  background: rgb(255 255 255 / 5%);
+  background: color-mix(in srgb, var(--rail-active) 55%, transparent);
 }
 
 .item[aria-current='page'] {
   background: var(--rail-active);
-  color: #fff;
+  color: var(--rail-strong);
 }
 
 .user {
@@ -64,7 +64,7 @@
   height: 24px;
   border-radius: 50%;
   background: url('../assets/avatar-dot.svg') center / 24px 24px no-repeat;
-  color: #fff;
+  color: var(--rail-strong);
   font-size: 9px;
   font-weight: 600;
 }

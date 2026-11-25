@@ -5,7 +5,7 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgb(11 31 28 / 16%);
+  background: color-mix(in srgb, var(--scrim) 16%, transparent);
   animation: fade-in 180ms var(--ease-out);
 }
 
@@ -17,7 +17,7 @@
   padding: 24px;
   border-radius: 14px;
   background: var(--bg-card);
-  box-shadow: 0 20px 40px rgb(10 31 28 / 18%);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--scrim) 18%, transparent);
   animation: dialog-in 220ms var(--ease-out);
 }
 
@@ -95,7 +95,7 @@
   padding: 0 16px;
   border: 0;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
 }
 
 .secondary {

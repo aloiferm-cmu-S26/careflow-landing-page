@@ -167,7 +167,7 @@
   padding: 10px 14px;
   border-radius: 12px;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   font-size: 13.5px;
   line-height: 19px;
 }

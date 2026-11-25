@@ -15,7 +15,7 @@
 
 .card[data-state='draft'],
 .card[data-state='editing'] {
-  border-color: rgb(11 31 28 / 32%);
+  border-color: color-mix(in srgb, var(--text) 32%, transparent);
 }
 
 .card[data-state='draft'] {
@@ -117,7 +117,7 @@
   padding: 0 16px;
   border: 0;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
 }
 
 .secondary {
@@ -132,7 +132,7 @@
 }
 
 .primary:disabled {
-  background: rgb(11 31 28 / 6%);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
   color: var(--text-4);
   cursor: default;
 }
@@ -156,7 +156,7 @@
 
 .editor:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgb(0 105 94 / 14%);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 14%, transparent);
 }
 
 .editFooter {
