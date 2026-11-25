@@ -1,6 +1,6 @@
 # CareFlow Style Guide: Overview
 
-**Full style guide (web page):** https://claude.ai/artifact/4BnuZBdxLgkecrP2npqnYo (or run the app and open /style-guide/)
+**Full style guide (web page):** https://aloiferm-cmu-s26.github.io/careflow-mvp/style-guide/
 **Source:** `style-guide/index.html`, `src/pages/style-guide/components.css`, `src/pages/app/app.css`
 
 ## Purpose

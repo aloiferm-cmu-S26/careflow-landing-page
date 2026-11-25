@@ -27,9 +27,18 @@ The code is in `src/pages/app/`:
 
 It is laid out for the iPad landscape size the designs use (1194 x 834) and needs at least 1024px of width.
 
+## Live demo
+
+Every push to `main` deploys the prototype and the style guide to GitHub Pages (`.github/workflows/deploy-pages.yml`):
+
+- App: https://aloiferm-cmu-s26.github.io/careflow-mvp/app/
+- Style guide: https://aloiferm-cmu-s26.github.io/careflow-mvp/style-guide/
+
+The landing page is not deployed there, because its live copy on Cloudflare Pages sends analytics and signups to the team's real Google properties.
+
 ## Style guide
 
-The style guide is a page of this project: run `npm run dev` and open http://localhost:5173/style-guide/. A published copy is at https://claude.ai/artifact/4BnuZBdxLgkecrP2npqnYo. It covers the logo, colors, typography, layout and spacing, buttons, icons, tags, cards, tables, menus, forms, dialogs and the design patterns. Each example is drawn by the CSS shown under it (`src/pages/style-guide/components.css`), and colors come from the app's tokens in `src/pages/app/app.css`. A one-page summary for Jama is in `docs/style-guide-one-pager.md`.
+The style guide is a page of this project: run `npm run dev` and open http://localhost:5173/style-guide/. The live copy is at https://aloiferm-cmu-s26.github.io/careflow-mvp/style-guide/. It covers the logo, colors, typography, layout and spacing, buttons, icons, tags, cards, tables, menus, forms, dialogs and the design patterns. Each example is drawn by the CSS shown under it (`src/pages/style-guide/components.css`), and colors come from the app's tokens in `src/pages/app/app.css`. A one-page summary for Jama is in `docs/style-guide-one-pager.md`.
 
 ## Limitations
 

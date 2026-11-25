@@ -1,0 +1,56 @@
+# Deploys the MVP prototype (/app/) and the style guide (/style-guide/) to
+# GitHub Pages on every push to main. The landing page is left out on purpose:
+# it is already live on Cloudflare Pages and sends analytics and signups to the
+# team's real Google properties, so a second copy here would mix in fake data.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Keep only the app and the style guide
+        run: |
+          rm -f dist/index.html dist/og-home.png
+          cat > dist/index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8" />
+          <title>CareFlow MVP prototype</title>
+          <meta http-equiv="refresh" content="0; url=app/" />
+          <p><a href="app/">Open the CareFlow MVP prototype</a> · <a href="style-guide/">Style guide</a></p>
+          HTML
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
