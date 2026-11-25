@@ -1,0 +1,483 @@
+/* Page chrome for the style guide itself. UI examples use components.css. */
+.sg {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sg-toc {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px 12px;
+  background: var(--rail);
+}
+
+.sg-toc a {
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: var(--rail-text);
+  font-size: 13.5px;
+  text-decoration: none;
+}
+
+.sg-toc a:hover {
+  background: var(--rail-active);
+  color: var(--rail-strong);
+}
+
+.sg-toc .sg-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.sg-brand small {
+  font-weight: 400;
+  color: var(--rail-muted);
+}
+
+.sg-toc-heading {
+  margin: 14px 10px 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rail-muted);
+}
+
+.sg-toc .sg-toc-app {
+  margin-top: auto;
+  border: 1px solid rgb(255 255 255 / 20%);
+  text-align: center;
+}
+
+.sg-main {
+  max-width: 1040px;
+  padding: 40px 48px 64px;
+}
+
+.sg-hero {
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--hair-strong);
+}
+
+.sg-eyebrow {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sg-hero h1 {
+  margin-top: 8px;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.sg-lede {
+  max-width: 64ch;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.sg-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.sg-principles li {
+  padding: 14px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.sg-principles strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.sg-section {
+  display: grid;
+  gap: 16px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--hair);
+  scroll-margin-top: 12px;
+}
+
+.sg-section h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sg-section h3 {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sg-text {
+  max-width: 70ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.sg-do {
+  max-width: 70ch;
+  padding-left: 12px;
+  border-left: 2px solid var(--teal);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.sg-text code,
+.sg-do code,
+.sg-footer code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.92em;
+}
+
+.sg-demo {
+  padding: 24px;
+  border: 1px dashed var(--hair-strong);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.sg-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.sg-demo-top {
+  align-items: flex-start;
+}
+
+.sg-demo-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.sg-on-dark {
+  display: inline-flex;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--rail);
+}
+
+.sg-code {
+  max-height: 420px;
+  overflow: auto;
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #0f1a18;
+  color: #d6e4df;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.sg-swatch {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+}
+
+.sg-swatch-chip {
+  display: block;
+  height: 64px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.sg-swatch figcaption {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px 12px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sg-swatch code {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.sg-swatch-hex {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.sg-type {
+  display: grid;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+}
+
+.sg-type-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px 220px;
+  gap: 16px;
+  align-items: baseline;
+  padding: 14px 16px;
+  border-top: 1px solid var(--hair);
+}
+
+.sg-type-row:first-child {
+  border-top: 0;
+}
+
+.sg-type-row code {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sg-type-row > span:last-child {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sg-layout {
+  display: grid;
+  grid-template-columns: 2fr 6fr 3fr;
+  grid-template-rows: 44px 160px;
+  gap: 4px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.sg-layout > div {
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.sg-layout-top {
+  grid-column: 1 / -1;
+  border: 1px solid var(--hair-strong);
+  background: var(--bg-card);
+}
+
+.sg-layout-rail {
+  background: var(--rail);
+  color: var(--rail-text);
+}
+
+.sg-layout-main {
+  border: 1px dashed var(--hair-strong);
+}
+
+.sg-layout-aside {
+  border: 1px solid var(--hair-strong);
+  background: var(--bg-card);
+}
+
+.sg-spacing {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.sg-spacing div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sg-spacing span {
+  height: 16px;
+  background: var(--teal);
+}
+
+.sg-spacing code {
+  width: 40px;
+  font-size: 12px;
+}
+
+.sg-spec {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.sg-spec th,
+.sg-spec td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hair);
+  text-align: left;
+  vertical-align: top;
+}
+
+.sg-spec th {
+  font-weight: 500;
+  color: var(--text-3);
+}
+
+.sg-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 10px;
+}
+
+.sg-icons figure {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 16px 8px 12px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+}
+
+.sg-icons figure.sg-on-dark {
+  border-color: transparent;
+  background: var(--rail);
+  color: var(--rail-text);
+}
+
+.sg-icons figcaption {
+  font-size: 12px;
+  color: inherit;
+}
+
+.sg-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  gap: 14px;
+}
+
+.sg-scroll {
+  overflow-x: auto;
+}
+
+.sg-scrim-demo {
+  border-radius: 10px;
+  padding: 32px 16px;
+}
+
+.sg-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.sg-patterns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.sg-patterns .cf-card {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 18px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.sg-patterns h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.sg-pattern-kind {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.sg-ref {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sg-ref a {
+  color: var(--teal);
+}
+
+.sg-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.sg-footer {
+  display: grid;
+  gap: 6px;
+  padding-top: 32px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+@media (max-width: 860px) {
+  .sg {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sg-toc {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sg-toc-heading {
+    display: none;
+  }
+
+  .sg-main {
+    padding: 28px 16px 48px;
+  }
+
+  .sg-type-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}

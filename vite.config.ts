@@ -16,10 +16,12 @@ export default defineConfig({
   build: {
     target: 'es2022',
     rollupOptions: {
-      // The landing page lives at / and the clickable MVP prototype at /app/.
+      // The landing page lives at /, the clickable MVP prototype at /app/ and
+      // its style guide at /style-guide/.
       input: {
         home: resolve(root, 'index.html'),
         app: resolve(root, 'app/index.html'),
+        styleGuide: resolve(root, 'style-guide/index.html'),
       },
     },
   },

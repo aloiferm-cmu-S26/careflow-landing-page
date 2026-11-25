@@ -1,0 +1,618 @@
+/*
+ * CareFlow UI components: the canonical CSS for every element in the style guide.
+ * Values match the MVP app (src/pages/app). Colors and sizes come from the tokens
+ * in src/pages/app/app.css. The style guide page shows each @section below next
+ * to a live example styled by this exact file.
+ */
+
+/* @section logo */
+.cf-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cf-logo-tile {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--teal);
+}
+
+/* @section buttons */
+.cf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+
+.cf-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Primary: the one main action on a screen (Open, Confirm, Save to chart). */
+.cf-button-primary {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+/* Secondary: a safe alternative next to a primary (Edit, Back, Cancel). */
+.cf-button-secondary {
+  border-color: var(--hair-strong);
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+/* Disabled: the action is not ready yet (Review and Save before all cards are confirmed). */
+.cf-button:disabled {
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  border-color: transparent;
+  color: var(--text-4);
+  cursor: not-allowed;
+}
+
+/* Floating: opens the Companion from any screen. */
+.cf-button-floating {
+  height: 48px;
+  padding: 0 20px 0 13px;
+  border-color: var(--hair-strong);
+  border-radius: 24px;
+  background: var(--bg-card);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+}
+
+/* Text link button: secondary actions inside text (View source). */
+.cf-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+/* @section icons */
+.cf-icon {
+  display: block;
+  flex: none;
+}
+
+.cf-icon-16 {
+  width: 16px;
+  height: 16px;
+}
+
+.cf-icon-20 {
+  width: 20px;
+  height: 20px;
+}
+
+/* Round icon button, like the notifications bell. */
+.cf-icon-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 20px;
+  background: var(--bg-card);
+  cursor: pointer;
+}
+
+/* Status dot: the color tells the patient state at a glance. */
+.cf-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.cf-dot-waiting {
+  background: var(--coral);
+}
+
+.cf-dot-progress {
+  background: var(--teal);
+}
+
+.cf-dot-review {
+  background: var(--amber);
+}
+
+.cf-dot-done {
+  background: var(--green);
+}
+
+/* Count badge on an icon button. */
+.cf-badge {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 7px;
+  background: var(--coral);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+}
+
+/* @section tags */
+.cf-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px 0 10px;
+  border-radius: 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+/* Allergy and safety warnings. */
+.cf-tag-alert {
+  background: var(--peach);
+  color: var(--red);
+}
+
+/* Positive, verified information. */
+.cf-tag-ok {
+  background: var(--mint);
+  color: var(--teal);
+}
+
+.cf-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+/* @section cards */
+.cf-card {
+  padding: 13px 15px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+}
+
+/* A draft card waits for the nurse to confirm it, so its border is stronger. */
+.cf-card-draft {
+  border-color: color-mix(in srgb, var(--text) 32%, transparent);
+}
+
+.cf-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cf-card-state {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-4);
+}
+
+.cf-card-meta {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.cf-stat {
+  display: grid;
+  gap: 15px;
+  padding: 11px 15px 16px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+}
+
+.cf-stat-value {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.cf-stat-label {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* Banner: confirms that something finished (records saved, plan updated). */
+.cf-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: var(--radius-button);
+  background: var(--mint);
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+/* Alert panel: a safety issue that needs review (drug interaction). */
+.cf-alert {
+  padding: 15px;
+  border: 1px solid var(--amber);
+  border-radius: var(--radius-card);
+  background: var(--peach);
+  color: var(--text);
+}
+
+/* @section tables */
+.cf-table-card {
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+}
+
+.cf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+
+.cf-table th {
+  height: 34px;
+  padding: 0 15px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-4);
+  text-align: left;
+}
+
+.cf-table td {
+  height: 64px;
+  padding: 0 15px;
+  border-top: 1px solid var(--hair);
+  white-space: nowrap;
+}
+
+.cf-table-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cf-table-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* @section chips */
+.cf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 18px;
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cf-chip-count {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-4);
+}
+
+.cf-chip[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.cf-chip[aria-pressed='true'] .cf-chip-count {
+  color: color-mix(in srgb, var(--on-ink) 70%, transparent);
+}
+
+/* @section menus */
+/* Workspace rail: the main navigation menu, always on the left. */
+.cf-rail {
+  display: grid;
+  gap: 4px;
+  width: 196px;
+  padding: 18px 8px;
+  background: var(--rail);
+}
+
+.cf-rail-heading {
+  padding: 0 8px 7px;
+  font-size: 12px;
+  color: var(--rail-muted);
+}
+
+.cf-rail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--rail-text);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cf-rail-item[aria-current='page'] {
+  background: var(--rail-active);
+  color: var(--rail-strong);
+}
+
+/* Dropdown menu, like the notifications list under the bell. */
+.cf-menu {
+  width: 320px;
+  padding: 6px;
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-float);
+}
+
+.cf-menu-item {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cf-menu-item:hover {
+  background: var(--bg-soft);
+}
+
+/* @section forms */
+.cf-field {
+  display: grid;
+  gap: 6px;
+}
+
+.cf-label {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.cf-input {
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  font-size: 13.5px;
+}
+
+.cf-input::placeholder {
+  color: var(--text-4);
+}
+
+/* Editing a chart card: the field the nurse is changing gets a teal border. */
+.cf-textarea {
+  min-height: 50px;
+  padding: 12px 9px;
+  border: 1.5px solid var(--teal);
+  border-radius: var(--radius-button);
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  resize: vertical;
+}
+
+.cf-input:focus-visible,
+.cf-textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 14%, transparent);
+}
+
+.cf-hint {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* Record checkbox: a real checkbox drawn as a 20px ink square. */
+.cf-checkbox {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1.5px solid var(--hair-strong);
+  border-radius: 4px;
+  background: var(--bg-card);
+  cursor: pointer;
+}
+
+.cf-checkbox:checked {
+  border-color: var(--ink);
+  background: var(--ink)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 6.2 5 8.5 9.5 3.5' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 12px 12px no-repeat;
+}
+
+/* @section dialogs */
+/* Modal dialog: blocks the screen until the nurse reviews and saves. */
+.cf-scrim {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: color-mix(in srgb, var(--scrim) 16%, transparent);
+}
+
+.cf-dialog {
+  width: 560px;
+  max-width: 100%;
+  padding: 24px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--scrim) 18%, transparent);
+}
+
+.cf-dialog-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cf-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* Side sheet: the Companion. Non-modal, so the screen behind stays usable. */
+.cf-sheet {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  border-left: 1px solid var(--hair-strong);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-float);
+}
+
+.cf-sheet-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 64px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--hair-strong);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cf-bubble-question {
+  justify-self: end;
+  max-width: 85%;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-size: 13.5px;
+}
+
+.cf-bubble-answer {
+  max-width: 90%;
+  padding: 11px 13px 12px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 13.5px;
+  line-height: 20px;
+}
+
+/* Toast: a short message that something happened elsewhere (physician replied). */
+.cf-toast {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  gap: 8px;
+  width: 356px;
+  max-width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 12px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-float);
+}
+
+/* Popover: extra detail next to an icon (warning on the visit summary). */
+.cf-popover {
+  width: 300px;
+  max-width: 100%;
+  padding: 11px;
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  box-shadow: 0 4px 6px color-mix(in srgb, var(--scrim) 18%, transparent);
+  font-size: 13.5px;
+  line-height: 20px;
+  color: var(--text-3);
+}
+
+/* @section layout */
+/* App frame: top bar, left rail, main content, optional right column. */
+.cf-shell {
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr) auto;
+  grid-template-rows: var(--header-h) minmax(0, 1fr);
+  grid-template-areas:
+    'top top top'
+    'rail main aside';
+  min-width: 1024px;
+  height: 100dvh;
+}
+
+.cf-shell-main {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 24px 96px;
+}
+
+.cf-shell-aside {
+  grid-area: aside;
+  width: 328px;
+  border-left: 1px solid var(--hair-strong);
+}
+
+.cf-page-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.cf-page-subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-3);
+}

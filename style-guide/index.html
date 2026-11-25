@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>CareFlow Style Guide</title>
+    <meta
+      name="description"
+      content="The look of the CareFlow MVP: colors, type, layout and every UI element, with its CSS."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="sg">
+      <nav class="sg-toc" aria-label="Style guide sections">
+        <a class="sg-brand" href="#top">
+          <span class="cf-logo-tile"
+            ><img src="/src/pages/app/assets/logo-cross.svg" alt="" width="16" height="16"
+          /></span>
+          <span>CareFlow<br /><small>Style Guide</small></span>
+        </a>
+        <p class="sg-toc-heading">Foundations</p>
+        <a href="#logo">Logo</a>
+        <a href="#color">Color</a>
+        <a href="#typography">Typography</a>
+        <a href="#layout">Page layout and spacing</a>
+        <p class="sg-toc-heading">Elements</p>
+        <a href="#buttons">Buttons</a>
+        <a href="#icons">Icons and status</a>
+        <a href="#tags">Tags and badges</a>
+        <a href="#cards">Cards and banners</a>
+        <a href="#tables">Tables and filters</a>
+        <a href="#menus">Menus</a>
+        <a href="#forms">Forms</a>
+        <a href="#dialogs">Dialogs and overlays</a>
+        <p class="sg-toc-heading">Behavior</p>
+        <a href="#patterns">Design patterns</a>
+        <a href="#voice">Writing</a>
+        <a class="sg-toc-app" href="../app/index.html">Open the app</a>
+      </nav>
+
+      <main class="sg-main" id="top">
+        <header class="sg-hero">
+          <p class="sg-eyebrow">CareFlow MVP · version 1.0 · November 2026</p>
+          <h1>Style Guide</h1>
+          <p class="sg-lede">
+            CareFlow helps emergency room nurses chart while they talk to patients. This guide shows
+            how the app looks and why. Every example on this page is drawn with the real CSS shown
+            under it, and the colors and sizes come from the same tokens the app uses.
+          </p>
+          <ul class="sg-principles">
+            <li>
+              <strong>Calm.</strong> Night shifts are long. Soft backgrounds, few colors, one dark
+              sidebar.
+            </li>
+            <li>
+              <strong>Safe.</strong> Warnings use warm colors and always come with words, never
+              color alone.
+            </li>
+            <li>
+              <strong>Nurse in control.</strong> Nothing reaches the chart until the nurse confirms
+              it.
+            </li>
+            <li>
+              <strong>Glanceable.</strong> Status dots and counts tell the shift's state in a
+              second.
+            </li>
+          </ul>
+        </header>
+
+        <!-- LOGO -->
+        <section class="sg-section" id="logo">
+          <h2>Logo</h2>
+          <p class="sg-text">
+            A white medical cross on a teal tile, next to the word CareFlow. The tile is 20px with
+            5px corners. In a patient record the word changes to "Patient record" so the nurse
+            always knows where they are.
+          </p>
+          <div class="sg-demo sg-demo-row">
+            <span class="cf-logo"
+              ><span class="cf-logo-tile"
+                ><img
+                  src="/src/pages/app/assets/logo-cross.svg"
+                  alt=""
+                  width="16"
+                  height="16" /></span
+              >CareFlow</span
+            >
+            <span class="cf-logo" style="font-size: 14px; font-weight: 500"
+              ><span class="cf-logo-tile"
+                ><img
+                  src="/src/pages/app/assets/logo-cross.svg"
+                  alt=""
+                  width="16"
+                  height="16" /></span
+              >Patient record</span
+            >
+            <span class="sg-on-dark"
+              ><span class="cf-logo" style="color: #fff"
+                ><span class="cf-logo-tile"
+                  ><img
+                    src="/src/pages/app/assets/logo-cross.svg"
+                    alt=""
+                    width="16"
+                    height="16" /></span
+                >CareFlow</span
+              ></span
+            >
+          </div>
+          <p class="sg-do">
+            Keep at least 8px of space around the logo. Do not recolor the tile or stretch the
+            cross.
+          </p>
+          <pre class="sg-code" data-section="logo"></pre>
+        </section>
+
+        <!-- COLOR -->
+        <section class="sg-section" id="color">
+          <h2>Color</h2>
+          <p class="sg-text">
+            Spruce greens and a warm off-white keep the screen calm. Teal is the brand color. Four
+            signal colors show patient status and safety. All colors are CSS custom properties in
+            <code>src/pages/app/app.css</code>, so a screen never uses a raw hex value.
+          </p>
+          <div class="sg-swatches" id="swatches"></div>
+          <h3>Status colors</h3>
+          <div class="sg-demo sg-demo-row">
+            <span class="cf-status"
+              ><span class="cf-dot cf-dot-waiting"></span>Waiting for triage</span
+            >
+            <span class="cf-status"><span class="cf-dot cf-dot-progress"></span>In progress</span>
+            <span class="cf-status"
+              ><span class="cf-dot cf-dot-review"></span>Awaiting physician review</span
+            >
+            <span class="cf-status"><span class="cf-dot cf-dot-done"></span>Charting done</span>
+          </div>
+          <p class="sg-do">
+            Contrast on <code>--bg</code>: <code>--text</code> 16.4:1, <code>--text-2</code> 9.5:1,
+            <code>--text-3</code> 6.4:1, <code>--teal</code> 6.3:1, allergy red on peach 4.8:1. All
+            pass WCAG AA (4.5:1). Known issue: <code>--text-4</code> is 2.8:1, so it is only used
+            for table headers and counts that repeat information shown elsewhere. Darkening it to
+            #66766f (4.6:1) would fix this.
+          </p>
+          <h3>Tokens (app.css)</h3>
+          <pre class="sg-code" id="tokens-css"></pre>
+        </section>
+
+        <!-- TYPOGRAPHY -->
+        <section class="sg-section" id="typography">
+          <h2>Typography</h2>
+          <p class="sg-text">
+            One family: <strong>Inter</strong> (variable, with optical sizes), loaded from the app
+            bundle, so it works offline on the hospital network. Two weights do the work: 400 for
+            reading and 500 for names, titles and buttons. 600 is only for the logo and badges.
+          </p>
+          <div class="sg-type">
+            <div class="sg-type-row">
+              <span style="font-size: 26px; font-weight: 500">4</span><code>26 / 500</code
+              ><span>Stat numbers on the dashboard</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 20px; font-weight: 500">My patients</span><code>20 / 500</code
+              ><span>Page title</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 18px; font-weight: 500">Review before saving</span
+              ><code>18 / 500</code><span>Dialog title</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 16px; font-weight: 500">Alex Morgan</span><code>16 / 500</code
+              ><span>Top bar title, patient name</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 14px; font-weight: 500">Symptoms</span><code>14 / 500</code
+              ><span>Card title, table name</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 13.5px">Patient appears confused on arrival.</span
+              ><code>13.5 / 400</code><span>Body text, buttons (500)</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 13px; color: var(--text-3)"
+                >4 patients assigned to you this shift</span
+              ><code>13 / 400</code><span>Subtitles, labels</span>
+            </div>
+            <div class="sg-type-row">
+              <span style="font-size: 12px; color: var(--text-3)"
+                >Transcript 00:08 · From spoken symptoms · 21:44</span
+              ><code>12 / 400</code><span>Meta lines, table headers</span>
+            </div>
+          </div>
+          <p class="sg-do">
+            Line height is normal (about 1.2) for single lines and 20px for paragraphs of 13.5 to
+            14px.
+          </p>
+          <pre class="sg-code">
+body {
+  font-family: var(--font-sans); /* 'Inter Variable', ui-sans-serif, system-ui, sans-serif */
+  font-size: 13.5px;
+  line-height: normal;
+  color: var(--text);
+  background: var(--bg);
+}</pre>
+        </section>
+
+        <!-- LAYOUT -->
+        <section class="sg-section" id="layout">
+          <h2>Page layout and spacing</h2>
+          <p class="sg-text">
+            CareFlow is designed for a tablet on a wall arm or a cart: iPad landscape, 1194 × 834,
+            minimum 1024px wide. Every screen uses the same frame: a 64px top bar with the patient
+            header, a 196px dark workspace rail on the left, the main content, and an optional 328px
+            column on the right (the Live Chart conversation).
+          </p>
+          <div class="sg-layout" aria-hidden="true">
+            <div class="sg-layout-top">
+              Top bar · 64px · logo, patient name, ID, allergy tag, identity, notifications
+            </div>
+            <div class="sg-layout-rail">Rail<br />196px</div>
+            <div class="sg-layout-main">Main content<br />padding 20px 24px</div>
+            <div class="sg-layout-aside">Aside<br />328px</div>
+          </div>
+          <h3>Spacing scale</h3>
+          <p class="sg-text">
+            Spacing comes in steps of 4. Larger gaps separate groups; smaller gaps hold one group
+            together.
+          </p>
+          <div class="sg-spacing">
+            <div><span style="width: 4px"></span><code>4px</code> between nav items</div>
+            <div>
+              <span style="width: 8px"></span><code>8px</code> icon to label, between buttons and
+              chips
+            </div>
+            <div><span style="width: 12px"></span><code>12px</code> between stacked cards</div>
+            <div>
+              <span style="width: 16px"></span><code>16px</code> between page sections, card padding
+              (15px + 1px border)
+            </div>
+            <div>
+              <span style="width: 20px"></span><code>20px</code> page top padding, between stats and
+              filters
+            </div>
+            <div>
+              <span style="width: 24px"></span><code>24px</code> page side padding, dialog padding
+            </div>
+          </div>
+          <h3>Corners and depth</h3>
+          <p class="sg-text">
+            Radius 8px for buttons and inputs, 10px for cards, 12 to 14px for overlays, full pill
+            for chips and tags. Only floating things have a shadow: the Companion button, toasts,
+            menus and dialogs.
+          </p>
+          <pre class="sg-code" data-section="layout"></pre>
+        </section>
+
+        <!-- BUTTONS -->
+        <section class="sg-section" id="buttons">
+          <h2>Buttons</h2>
+          <p class="sg-text">
+            One primary button per screen area, for the action that moves the flow forward. Labels
+            are verbs that say what happens: "Confirm", "Save to chart", "Send to care team". Every
+            button is at least 40px tall, a comfortable touch target with gloves.
+          </p>
+          <div class="sg-demo sg-demo-row">
+            <button class="cf-button cf-button-primary" type="button">Save to chart</button>
+            <button class="cf-button cf-button-secondary" type="button">Back</button>
+            <button class="cf-button cf-button-primary" type="button" disabled>
+              Review and Save
+            </button>
+            <button class="cf-button cf-button-floating" type="button">
+              <img
+                class="cf-icon cf-icon-20"
+                src="/src/pages/app/assets/chat.svg"
+                alt=""
+                width="20"
+                height="20"
+              />Ask Companion
+            </button>
+            <button class="cf-link" type="button">View source</button>
+          </div>
+          <table class="sg-spec">
+            <thead>
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Use it for</th>
+                <th scope="col">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary</td>
+                <td>The main next step</td>
+                <td>Open, Confirm, Save to chart</td>
+              </tr>
+              <tr>
+                <td>Secondary</td>
+                <td>A safe alternative beside a primary</td>
+                <td>Edit, Back, Cancel, Start chat</td>
+              </tr>
+              <tr>
+                <td>Disabled</td>
+                <td>A step that is not ready; the text near it says why</td>
+                <td>Review and Save before all cards are confirmed</td>
+              </tr>
+              <tr>
+                <td>Floating</td>
+                <td>The Companion, reachable from every screen</td>
+                <td>Ask Companion</td>
+              </tr>
+              <tr>
+                <td>Link</td>
+                <td>Extra detail inside text</td>
+                <td>View source, Why is this a concern?</td>
+              </tr>
+            </tbody>
+          </table>
+          <pre class="sg-code" data-section="buttons"></pre>
+        </section>
+
+        <!-- ICONS -->
+        <section class="sg-section" id="icons">
+          <h2>Icons and status</h2>
+          <p class="sg-text">
+            Line icons with a 1.5px stroke on a 16px or 20px grid, exported from the Figma file as
+            SVG. An icon always sits next to a word, except the bell and the close button, which
+            have an accessible label.
+          </p>
+          <div class="sg-icons">
+            <figure>
+              <img src="/src/pages/app/assets/bell.svg" alt="" width="20" height="20" />
+              <figcaption>Notifications</figcaption>
+            </figure>
+            <figure>
+              <img src="/src/pages/app/assets/chat.svg" alt="" width="20" height="20" />
+              <figcaption>Companion</figcaption>
+            </figure>
+            <figure>
+              <img src="/src/pages/app/assets/check.svg" alt="" width="16" height="16" />
+              <figcaption>Confirmed</figcaption>
+            </figure>
+            <figure>
+              <img src="/src/pages/app/assets/allergy-warning.svg" alt="" width="14" height="14" />
+              <figcaption>Allergy</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="/src/pages/app/features/history/assets/warning-amber.svg"
+                alt=""
+                width="14"
+                height="14"
+              />
+              <figcaption>Interaction</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="/src/pages/app/features/medication/assets/info.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <figcaption>More info</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="/src/pages/app/features/companion/assets/close.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+              <figcaption>Close</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="/src/pages/app/features/history/assets/phone.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+              <figcaption>Tap to share</figcaption>
+            </figure>
+            <figure class="sg-on-dark">
+              <img src="/src/pages/app/assets/nav-menu.svg" alt="" width="16" height="16" />
+              <figcaption>My patients</figcaption>
+            </figure>
+            <figure class="sg-on-dark">
+              <img src="/src/pages/app/assets/nav-history.svg" alt="" width="16" height="16" />
+              <figcaption>History</figcaption>
+            </figure>
+            <figure class="sg-on-dark">
+              <img src="/src/pages/app/assets/nav-medication.svg" alt="" width="16" height="16" />
+              <figcaption>Medication</figcaption>
+            </figure>
+            <figure class="sg-on-dark">
+              <img src="/src/pages/app/assets/nav-chart.svg" alt="" width="16" height="16" />
+              <figcaption>Live Chart</figcaption>
+            </figure>
+            <figure class="sg-on-dark">
+              <img
+                src="/src/pages/app/features/chart/assets/mic.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <figcaption>Listening</figcaption>
+            </figure>
+          </div>
+          <div class="sg-demo sg-demo-row">
+            <button class="cf-icon-button" type="button" aria-label="Notifications, 1 unread">
+              <img
+                class="cf-icon cf-icon-20"
+                src="/src/pages/app/assets/bell.svg"
+                alt=""
+                width="20"
+                height="20"
+              /><span class="cf-badge" aria-hidden="true">1</span>
+            </button>
+            <span class="cf-status"
+              ><span class="cf-dot cf-dot-review"></span>Pending physician review</span
+            >
+          </div>
+          <pre class="sg-code" data-section="icons"></pre>
+        </section>
+
+        <!-- TAGS -->
+        <section class="sg-section" id="tags">
+          <h2>Tags and badges</h2>
+          <p class="sg-text">
+            Tags carry safety facts that must stay visible, like an allergy in the patient header.
+            Red text on peach for danger, teal on mint for verified good news.
+          </p>
+          <div class="sg-demo sg-demo-row">
+            <span class="cf-tag cf-tag-alert"
+              ><img
+                src="/src/pages/app/assets/allergy-warning.svg"
+                alt=""
+                width="14"
+                height="14"
+              />Allergy: Penicillin</span
+            >
+            <span class="cf-tag cf-tag-ok"
+              ><img src="/src/pages/app/assets/check.svg" alt="" width="14" height="14" />Identity
+              confirmed</span
+            >
+          </div>
+          <pre class="sg-code" data-section="tags"></pre>
+        </section>
+
+        <!-- CARDS -->
+        <section class="sg-section" id="cards">
+          <h2>Cards and banners</h2>
+          <p class="sg-text">
+            A card holds one thing the nurse acts on. White on the off-white page, a hairline
+            border, no shadow. A draft card has a darker border until it is confirmed. Banners
+            confirm that something finished; alert panels ask for a review.
+          </p>
+          <div class="sg-demo sg-demo-stack">
+            <div class="sg-grid-4">
+              <div class="cf-stat">
+                <span class="cf-stat-value">4</span><span class="cf-stat-label">Assigned</span>
+              </div>
+              <div class="cf-stat">
+                <span class="cf-stat-value">1</span
+                ><span class="cf-stat-label">Waiting for triage</span>
+              </div>
+            </div>
+            <article class="cf-card cf-card-draft">
+              <p class="cf-card-title">Symptoms <span class="cf-card-state">Draft</span></p>
+              <p style="margin: 12px 0 14px; font-size: 14px">
+                Patient appears confused on arrival. Unable to recall current medications.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span class="cf-card-meta">Transcript 00:08 · From spoken symptoms · 21:44</span>
+                <span style="display: flex; gap: 8px"
+                  ><button class="cf-button cf-button-primary" type="button">Confirm</button
+                  ><button class="cf-button cf-button-secondary" type="button">Edit</button></span
+                >
+              </div>
+            </article>
+            <div class="cf-banner">
+              <img src="/src/pages/app/assets/check.svg" alt="" width="16" height="16" />6 records
+              saved to Alex's chart at 21:43.
+            </div>
+            <div class="cf-alert">
+              <p style="font-size: 15px; font-weight: 500">
+                Possible drug interaction, review needed
+              </p>
+              <p style="margin-top: 6px; font-size: 13px; color: var(--text-2)">
+                Warfarin + Ketorolac. Both medications increase the risk of bleeding when used
+                together.
+              </p>
+            </div>
+          </div>
+          <pre class="sg-code" data-section="cards"></pre>
+        </section>
+
+        <!-- TABLES -->
+        <section class="sg-section" id="tables">
+          <h2>Tables and filters</h2>
+          <p class="sg-text">
+            The patient list is a real table, so screen readers read the column names. Rows are 64px
+            for touch. Filter chips above it narrow the list and always show how many patients each
+            filter holds.
+          </p>
+          <div class="sg-demo sg-demo-stack">
+            <div class="sg-demo-row" role="group" aria-label="Filter example">
+              <button class="cf-chip" type="button" aria-pressed="true">
+                All <span class="cf-chip-count">4</span>
+              </button>
+              <button class="cf-chip" type="button" aria-pressed="false">
+                Waiting <span class="cf-chip-count">1</span>
+              </button>
+              <button class="cf-chip" type="button" aria-pressed="false">
+                Done <span class="cf-chip-count">1</span>
+              </button>
+            </div>
+            <div class="cf-table-card sg-scroll">
+              <table class="cf-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Bed</th>
+                    <th scope="col">Reason for visit</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"><span class="sg-sr">Actions</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="cf-table-name">Alex Morgan</span
+                      ><span class="cf-table-sub">PT-00482</span>
+                    </td>
+                    <td>Bed 4</td>
+                    <td>Confusion, unsure of medications</td>
+                    <td>
+                      <span class="cf-status"
+                        ><span class="cf-dot cf-dot-waiting"></span>Waiting for triage</span
+                      >
+                    </td>
+                    <td style="text-align: right">
+                      <button class="cf-button cf-button-primary" type="button">Open</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="cf-table-name">Daniel Okafor</span
+                      ><span class="cf-table-sub">PT-00471</span>
+                    </td>
+                    <td>Bed 7</td>
+                    <td>Hand laceration</td>
+                    <td>
+                      <span class="cf-status"
+                        ><span class="cf-dot cf-dot-done"></span>Charting done</span
+                      >
+                    </td>
+                    <td style="text-align: right">
+                      <button class="cf-button cf-button-primary" type="button">Open</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pre class="sg-code" data-section="tables"></pre>
+          <pre class="sg-code" data-section="chips"></pre>
+        </section>
+
+        <!-- MENUS -->
+        <section class="sg-section" id="menus">
+          <h2>Menus</h2>
+          <p class="sg-text">
+            The workspace rail is the main menu. On the dashboard it has one item. Inside a patient
+            record it shows the three tools for that patient, with "My patients" as the way back.
+            The bell opens a dropdown list of notifications; tapping one goes to the screen it is
+            about.
+          </p>
+          <div class="sg-demo sg-demo-row sg-demo-top">
+            <nav class="cf-rail" aria-label="Menu example">
+              <p class="cf-rail-heading">Workspace</p>
+              <button class="cf-rail-item" type="button">
+                <img src="/src/pages/app/assets/nav-back.svg" alt="" width="16" height="16" />My
+                patients
+              </button>
+              <button class="cf-rail-item" type="button">
+                <img
+                  src="/src/pages/app/assets/nav-history.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />Patient History
+              </button>
+              <button class="cf-rail-item" type="button">
+                <img
+                  src="/src/pages/app/assets/nav-medication.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />Medication Review
+              </button>
+              <button class="cf-rail-item" type="button" aria-current="page">
+                <img src="/src/pages/app/assets/nav-chart.svg" alt="" width="16" height="16" />Live
+                Chart
+              </button>
+            </nav>
+            <div class="cf-menu" role="menu" aria-label="Notifications example">
+              <button class="cf-menu-item" type="button" role="menuitem">
+                <span style="font-size: 13.5px; font-weight: 500">Dr. Patel replied</span>
+                <span style="font-size: 12.5px; color: var(--text-3)"
+                  >Medication review for Alex Morgan: do not give ketorolac. See the new
+                  order.</span
+                >
+              </button>
+            </div>
+          </div>
+          <pre class="sg-code" data-section="menus"></pre>
+        </section>
+
+        <!-- FORMS -->
+        <section class="sg-section" id="forms">
+          <h2>Forms</h2>
+          <p class="sg-text">
+            CareFlow has few forms because most input is spoken. The fields that exist: the
+            Companion question box, the editor for a chart card, and record checkboxes when saving
+            history. Every field has a label, visible or for screen readers.
+          </p>
+          <div class="sg-demo sg-demo-stack" style="max-width: 560px">
+            <div class="cf-field">
+              <label class="cf-label" for="sg-question">Ask a question</label>
+              <input
+                class="cf-input"
+                id="sg-question"
+                type="text"
+                placeholder="Ask a question..."
+              />
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="sg-findings">Findings</label>
+              <textarea class="cf-textarea" id="sg-findings" rows="2">
+Medication history retrieved from two sources. Possible interaction flagged for review.</textarea>
+              <span class="cf-hint">Changed "one source" to "two sources".</span>
+            </div>
+            <label class="sg-check"
+              ><input class="cf-checkbox" type="checkbox" checked /> Metformin 500 mg
+              <span class="cf-hint">Retail pharmacy</span></label
+            >
+            <label class="sg-check"
+              ><input class="cf-checkbox" type="checkbox" /> Lisinopril 10 mg
+              <span class="cf-hint">Retail pharmacy</span></label
+            >
+          </div>
+          <pre class="sg-code" data-section="forms"></pre>
+        </section>
+
+        <!-- DIALOGS -->
+        <section class="sg-section" id="dialogs">
+          <h2>Dialogs and overlays</h2>
+          <p class="sg-text">
+            Four kinds, from strongest to lightest. A <strong>modal dialog</strong> stops everything
+            for a decision that changes the chart. A <strong>side sheet</strong> (the Companion)
+            sits beside the work without blocking it. A <strong>toast</strong> tells the nurse that
+            something happened elsewhere. A <strong>popover</strong> explains one item and closes
+            when you tap outside. All of them close with Escape.
+          </p>
+          <div class="sg-demo sg-demo-stack">
+            <div class="cf-scrim sg-scrim-demo">
+              <div class="cf-dialog" role="dialog" aria-label="Review before saving (example)">
+                <p class="cf-dialog-title">Review before saving</p>
+                <p class="cf-page-subtitle">
+                  Three confirmed cards will be saved to Alex Morgan's chart.
+                </p>
+                <div class="cf-dialog-actions">
+                  <button class="cf-button cf-button-secondary" type="button">Back</button>
+                  <button class="cf-button cf-button-primary" type="button">Save to chart</button>
+                </div>
+              </div>
+            </div>
+            <div class="sg-demo-row sg-demo-top">
+              <div class="cf-sheet" style="height: 300px">
+                <div class="cf-sheet-header">
+                  <img
+                    src="/src/pages/app/features/companion/assets/companion-chat.svg"
+                    alt=""
+                    width="28"
+                    height="28"
+                  />Nurse Companion
+                </div>
+                <div style="display: grid; gap: 10px; padding: 18px 20px">
+                  <span class="cf-bubble-question">What should I know about warfarin?</span>
+                  <div class="cf-bubble-answer">
+                    Warfarin raises bleeding risk. Check with the physician before giving
+                    ketorolac.<br /><span class="cf-card-meta"
+                      >Source: FDA drug label · Warfarin (illustrative)</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div style="display: grid; gap: 16px; align-content: start">
+                <div class="cf-toast">
+                  <span class="cf-dot cf-dot-waiting" style="margin-top: 5px"></span>
+                  <div>
+                    <p style="font-weight: 500">Dr. Patel replied</p>
+                    <p style="margin-top: 4px; font-size: 13px; color: var(--text-3)">
+                      Do not give ketorolac. See the new order.
+                    </p>
+                  </div>
+                </div>
+                <div class="cf-popover">
+                  Bleeding risk. Interaction flagged with ketorolac. Ketorolac was not given.
+                </div>
+              </div>
+            </div>
+          </div>
+          <pre class="sg-code" data-section="dialogs"></pre>
+        </section>
+
+        <!-- PATTERNS -->
+        <section class="sg-section" id="patterns">
+          <h2>Design patterns</h2>
+          <p class="sg-text">
+            These are the interaction patterns the MVP uses, where each one appears, and why we
+            chose it. The first one is the navigation pattern.
+          </p>
+          <div class="sg-patterns">
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Navigation</p>
+              <h3>Persistent sidebar navigation</h3>
+              <p>
+                <strong>Where:</strong> the dark workspace rail on every screen. Dashboard shows "My
+                patients"; a patient record adds Patient History, Medication Review and Live Chart.
+              </p>
+              <p>
+                <strong>Why:</strong> nurses switch tools for the same patient many times. A rail
+                that never moves keeps every tool one tap away and always shows where you are
+                (highlighted item). "My patients" with a back arrow is the way out.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://m3.material.io/components/navigation-drawer/overview"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Material Design 3, Navigation drawer</a
+                >
+              </p>
+            </article>
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Data</p>
+              <h3>Filter chips over a data table</h3>
+              <p>
+                <strong>Where:</strong> My patients dashboard (All, Waiting, In progress, Awaiting
+                review, Done).
+              </p>
+              <p>
+                <strong>Why:</strong> one tap narrows the shift list to what needs attention, and
+                each chip shows its count so the nurse sees the workload before tapping.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://m3.material.io/components/chips/overview"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Material Design 3, Chips (filter chips)</a
+                >
+              </p>
+            </article>
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Assistance</p>
+              <h3>Side sheet assistant</h3>
+              <p>
+                <strong>Where:</strong> the Nurse Companion, opened from the floating "Ask
+                Companion" button on any screen.
+              </p>
+              <p>
+                <strong>Why:</strong> the nurse can ask about a drug without losing the chart behind
+                it. It is non-modal, can be minimized, and every answer shows its source.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://m3.material.io/components/side-sheets/overview"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Material Design 3, Side sheets</a
+                >
+              </p>
+            </article>
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Safety</p>
+              <h3>Review before saving (modal confirmation)</h3>
+              <p>
+                <strong>Where:</strong> Patient History "Add to chart" and Live Chart "Review and
+                Save".
+              </p>
+              <p>
+                <strong>Why:</strong> saving changes the legal patient record. A modal dialog lists
+                exactly what will be saved and lets the nurse go back. Nothing is saved by accident.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://www.nngroup.com/articles/modal-nonmodal-dialog/"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Nielsen Norman Group, Modal and Nonmodal Dialogs</a
+                >
+              </p>
+            </article>
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Feedback</p>
+              <h3>Notification toast with badge</h3>
+              <p>
+                <strong>Where:</strong> when Dr. Patel replies to a medication review: a toast under
+                the bell plus a count badge on it.
+              </p>
+              <p>
+                <strong>Why:</strong> the reply arrives while the nurse is busy elsewhere. The toast
+                is visible but does not block, and the badge keeps it findable later.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://m3.material.io/components/badges/overview"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Material Design 3, Badges</a
+                >
+                and
+                <a
+                  href="https://m3.material.io/components/snackbar/overview"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Snackbar</a
+                >
+              </p>
+            </article>
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Onboarding</p>
+              <h3>Empty state with one clear action</h3>
+              <p>
+                <strong>Where:</strong> Patient History before any records ("Ask Alex to tap their
+                phone on this tablet").
+              </p>
+              <p>
+                <strong>Why:</strong> an empty screen explains what will appear and gives the single
+                next step, so the nurse is never stuck.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://www.nngroup.com/articles/empty-state-interface-design/"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Nielsen Norman Group, Designing Empty States</a
+                >
+              </p>
+            </article>
+            <article class="cf-card">
+              <p class="sg-pattern-kind">Input</p>
+              <h3>Draft, confirm or edit (human in the loop)</h3>
+              <p><strong>Where:</strong> Live Chart cards (Symptoms, Findings, Plan).</p>
+              <p>
+                <strong>Why:</strong> CareFlow drafts the chart from speech, but speech can be
+                misheard. Each card starts as a draft and the nurse confirms or edits it in place.
+                The page counts "confirmed" and "draft" so nothing is missed.
+              </p>
+              <p class="sg-ref">
+                Reference:
+                <a
+                  href="https://m3.material.io/components/cards/overview"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Material Design 3, Cards</a
+                >
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- VOICE -->
+        <section class="sg-section" id="voice">
+          <h2>Writing</h2>
+          <p class="sg-text">
+            Words are part of the interface. Short, plain, and from the nurse's side of the screen.
+          </p>
+          <table class="sg-spec">
+            <thead>
+              <tr>
+                <th scope="col">Do</th>
+                <th scope="col">Don't</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Save to chart</td>
+                <td>Submit</td>
+              </tr>
+              <tr>
+                <td>Possible drug interaction, review needed</td>
+                <td>Error: conflict detected</td>
+              </tr>
+              <tr>
+                <td>Not in chart yet</td>
+                <td>Pending sync</td>
+              </tr>
+              <tr>
+                <td>Care team makes the treatment decision.</td>
+                <td>AI recommends ketorolac 30 mg</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sg-do">
+            Times are 24-hour (21:43). Dates are "14 May 1964". Patient IDs keep their prefix
+            (PT-00482).
+          </p>
+        </section>
+
+        <footer class="sg-footer">
+          <p>
+            CareFlow is a concept by a Carnegie Mellon student team. Not for clinical use. All
+            patients are fictional.
+          </p>
+          <p>
+            Source: <code>src/pages/style-guide/components.css</code> and
+            <code>src/pages/app/app.css</code>.
+          </p>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="/src/pages/style-guide/main.ts"></script>
+  </body>
+</html>

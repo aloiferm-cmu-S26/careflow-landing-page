@@ -27,6 +27,20 @@ The code is in `src/pages/app/`:
 
 It is laid out for the iPad landscape size the designs use (1194 x 834) and needs at least 1024px of width.
 
+## Style guide
+
+The style guide is a page of this project: run `npm run dev` and open http://localhost:5173/style-guide/. A published copy is at https://claude.ai/artifact/4BnuZBdxLgkecrP2npqnYo. It covers the logo, colors, typography, layout and spacing, buttons, icons, tags, cards, tables, menus, forms, dialogs and the design patterns. Each example is drawn by the CSS shown under it (`src/pages/style-guide/components.css`), and colors come from the app's tokens in `src/pages/app/app.css`. A one-page summary for Jama is in `docs/style-guide-one-pager.md`.
+
+## Limitations
+
+The MVP prototype is a front-end demo:
+
+- **Hard-coded data.** The four patients, Alex's records, the Live Chart conversation, the physician's reply and the Companion's answers are fixed scripts in the code.
+- **No backend.** Nothing is saved. A page refresh keeps the current screen but resets all progress.
+- **No real integrations.** The phone tap, pharmacy and hospital records, speech-to-text, physician messaging and the AI Companion are simulated.
+- **One full patient flow.** Only Alex Morgan has every step. Other patients open screens with Alex's content.
+- **Tablet only.** The layout targets iPad landscape and needs at least 1024px of width.
+
 ## Configuration
 
 Everything that changes per deployment is in `src/config.ts`: the Google Analytics ID, the video link, the site URL and the signup form. With no form connected, the signup flow runs without saving anything.
