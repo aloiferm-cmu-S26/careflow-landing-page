@@ -189,3 +189,57 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Medium and narrow: the conversation stacks under the cards, full width, and
+   scrolls with the page. The controls sit in normal flow right under the
+   heading, so they are the first thing the nurse reaches after the cards and
+   they never hide behind the tab bar or the Ask Companion button (the shell
+   pads the bottom of the aside for those). The transcript grows below them. */
+@media (max-width: 1099px) {
+  .column {
+    min-height: 0;
+    padding: 20px var(--page-pad-x) 0;
+  }
+
+  .dock {
+    position: static;
+    order: 1;
+    justify-content: flex-start;
+    margin-top: 16px;
+    padding: 0;
+    background: none;
+  }
+
+  .empty,
+  .lines {
+    order: 2;
+  }
+
+  .empty {
+    margin-top: 14px;
+  }
+
+  .lines {
+    margin-top: 16px;
+  }
+
+  .listeningRow {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 767px) {
+  .column {
+    padding-top: 16px;
+  }
+
+  .start,
+  .ended {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .listeningRow {
+    max-width: none;
+  }
+}

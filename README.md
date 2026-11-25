@@ -25,7 +25,7 @@ The code is in `src/pages/app/`:
 - `state/` holds the patient data and app-wide state. Screens use hash routes like `#/patients/PT-00482/chart`, so the back button and deep links work.
 - `features/<screen>/` holds one folder per screen, with its own assets and tests.
 
-It is laid out for the iPad landscape size the designs use (1194 x 834) and needs at least 1024px of width.
+It is designed for an iPad in landscape (1194 x 834), the size of the Figma frames, and adapts to iPad portrait and phones. The breakpoints are listed at the top of `src/pages/app/app.css` and explained in the style guide.
 
 ## Live demo
 
@@ -48,7 +48,7 @@ The MVP prototype is a front-end demo:
 - **No backend.** Nothing is saved. A page refresh keeps the current screen but resets all progress.
 - **No real integrations.** The phone tap, pharmacy and hospital records, speech-to-text, physician messaging and the AI Companion are simulated.
 - **One full patient flow.** Only Alex Morgan has every step. Other patients open screens with Alex's content.
-- **Tablet only.** The layout targets iPad landscape and needs at least 1024px of width.
+- **Designs exist only for tablet landscape.** The iPad portrait and phone layouts were derived from them and have not been through a usability test.
 
 ## Configuration
 

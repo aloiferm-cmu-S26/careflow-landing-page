@@ -151,9 +151,9 @@ export function HistoryScreen() {
               {records.map((r) => (
                 <li key={r.id} className={styles.row}>
                   <RecordName record={r} />
-                  <span className={styles.meta}>{r.source}</span>
+                  <span className={`${styles.meta} ${styles.source}`}>{r.source}</span>
                   <span className={styles.metaEnd}>
-                    <span className={styles.meta}>Updated {r.updated}</span>
+                    <span className={`${styles.meta} ${styles.updated}`}>Updated {r.updated}</span>
                     {step === 'received' ? (
                       <RecordCheckbox
                         label={`Select ${r.name}`}
@@ -295,7 +295,7 @@ function ReviewModal({
                 onChange={() => onToggle(r.id)}
               />
               <span className={styles.modalName}>{r.name}</span>
-              <span className={styles.modalMeta}>{r.category}</span>
+              <span className={`${styles.modalMeta} ${styles.modalCategory}`}>{r.category}</span>
               <span className={`${styles.modalMeta} ${styles.modalSource}`}>{r.source}</span>
             </li>
           ))}

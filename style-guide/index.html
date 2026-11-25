@@ -208,10 +208,10 @@ body {
         <section class="sg-section" id="layout">
           <h2>Page layout and spacing</h2>
           <p class="sg-text">
-            CareFlow is designed for a tablet on a wall arm or a cart: iPad landscape, 1194 × 834,
-            minimum 1024px wide. Every screen uses the same frame: a 64px top bar with the patient
-            header, a 196px dark workspace rail on the left, the main content, and an optional 328px
-            column on the right (the Live Chart conversation).
+            CareFlow is designed first for a tablet on a wall arm or a cart (iPad landscape, 1194 ×
+            834) and adapts down to a phone. Every screen uses the same frame: a top bar with the
+            patient header, the workspace rail, the main content, and an optional column on the
+            right (the Live Chart conversation).
           </p>
           <div class="sg-layout" aria-hidden="true">
             <div class="sg-layout-top">
@@ -220,6 +220,138 @@ body {
             <div class="sg-layout-rail">Rail<br />196px</div>
             <div class="sg-layout-main">Main content<br />padding 20px 24px</div>
             <div class="sg-layout-aside">Aside<br />328px</div>
+          </div>
+          <h3 id="responsive">Responsive breakpoints</h3>
+          <p class="sg-text">
+            Three layouts, chosen for the devices nurses actually use. Each one keeps the same order
+            of content, so a nurse who knows the tablet also knows the phone.
+          </p>
+          <div class="sg-breakpoints" aria-hidden="true">
+            <figure>
+              <div class="sg-bp sg-bp-wide">
+                <span class="sg-bp-top"></span><span class="sg-bp-rail"></span
+                ><span class="sg-bp-main"></span><span class="sg-bp-aside"></span>
+              </div>
+              <figcaption><strong>Wide</strong> · 1100px and up</figcaption>
+            </figure>
+            <figure>
+              <div class="sg-bp sg-bp-medium">
+                <span class="sg-bp-top"></span><span class="sg-bp-rail"></span
+                ><span class="sg-bp-main"></span><span class="sg-bp-aside"></span>
+              </div>
+              <figcaption><strong>Medium</strong> · 768 to 1099px</figcaption>
+            </figure>
+            <figure>
+              <div class="sg-bp sg-bp-narrow">
+                <span class="sg-bp-top"></span><span class="sg-bp-main"></span
+                ><span class="sg-bp-rail"></span>
+              </div>
+              <figcaption><strong>Narrow</strong> · under 768px</figcaption>
+            </figure>
+          </div>
+          <div class="sg-scroll">
+            <table class="sg-spec">
+              <thead>
+                <tr>
+                  <th scope="col">Element</th>
+                  <th scope="col">Wide (≥ 1100px)<br />desktop, iPad landscape</th>
+                  <th scope="col">Medium (768 to 1099px)<br />iPad portrait</th>
+                  <th scope="col">Narrow (&lt; 768px)<br />phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Workspace rail</td>
+                  <td>196px, icon and label</td>
+                  <td>72px, icons only (labels stay for screen readers)</td>
+                  <td>Bottom tab bar, 64px, icon and short label. Hidden on the dashboard.</td>
+                </tr>
+                <tr>
+                  <td>Top bar</td>
+                  <td>One row, 64px</td>
+                  <td>One row; logo tile without the word</td>
+                  <td>
+                    Two rows: name, date of birth and bell, then allergy and identity. Patient ID is
+                    hidden; name and date of birth stay as the two identifiers.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Right column (aside)</td>
+                  <td>328px beside the content</td>
+                  <td>Moves under the content, full width</td>
+                  <td>Under the content, full width</td>
+                </tr>
+                <tr>
+                  <td>Tables</td>
+                  <td>Full table</td>
+                  <td>Full table; long text wraps</td>
+                  <td>Each row becomes a card</td>
+                </tr>
+                <tr>
+                  <td>Card grids</td>
+                  <td>2 to 4 columns</td>
+                  <td>Fewer columns where cramped</td>
+                  <td>One column (stats: two)</td>
+                </tr>
+                <tr>
+                  <td>Ask Companion</td>
+                  <td>Pill button, bottom right</td>
+                  <td>Pill button, bottom right</td>
+                  <td>48px round button above the tab bar</td>
+                </tr>
+                <tr>
+                  <td>Companion panel</td>
+                  <td>360px side sheet</td>
+                  <td>360px side sheet</td>
+                  <td>Full-screen sheet</td>
+                </tr>
+                <tr>
+                  <td>Page side padding</td>
+                  <td>24px</td>
+                  <td>24px</td>
+                  <td>16px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="sg-do">
+            Rules for every screen: no sideways scrolling of the page from 360px up, touch targets
+            at least 40px (44px on phones), and fixed elements stay clear of the phone's notch and
+            home bar with <code>env(safe-area-inset-*)</code>. The breakpoints are written as
+            literal values in <code>@media</code> queries and listed at the top of
+            <code>app.css</code>.
+          </p>
+          <div class="sg-demo sg-demo-row">
+            <nav class="cf-tabbar" aria-label="Tab bar example">
+              <button class="cf-tabbar-item" type="button">
+                <img
+                  src="/src/pages/app/assets/nav-back.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />Patients
+              </button>
+              <button class="cf-tabbar-item" type="button">
+                <img
+                  src="/src/pages/app/assets/nav-history.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />History
+              </button>
+              <button class="cf-tabbar-item" type="button">
+                <img
+                  src="/src/pages/app/assets/nav-medication.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />Medication
+              </button>
+              <button class="cf-tabbar-item" type="button" aria-current="page">
+                <img src="/src/pages/app/assets/nav-chart.svg" alt="" width="20" height="20" />Live
+                Chart
+              </button>
+            </nav>
           </div>
           <h3>Spacing scale</h3>
           <p class="sg-text">
@@ -703,7 +835,15 @@ Medication history retrieved from two sources. Possible interaction flagged for 
                   </div>
                 </div>
               </div>
-              <div style="display: grid; gap: 16px; align-content: start">
+              <div
+                style="
+                  display: grid;
+                  flex: 1 1 260px;
+                  min-width: 0;
+                  gap: 16px;
+                  align-content: start;
+                "
+              >
                 <div class="cf-toast">
                   <span class="cf-dot cf-dot-waiting" style="margin-top: 5px"></span>
                   <div>

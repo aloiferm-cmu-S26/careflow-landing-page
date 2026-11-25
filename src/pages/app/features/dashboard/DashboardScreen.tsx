@@ -90,14 +90,17 @@ export function DashboardScreen() {
           <tbody>
             {visible.map((p) => (
               <tr key={p.id}>
-                <td>
+                <td className={styles.nameCell}>
                   <span className={styles.name}>{p.name}</span>
                   <span className={styles.pid}>{p.id}</span>
                 </td>
-                <td>{p.bed}</td>
-                <td>{p.arrived}</td>
-                <td>{p.reason}</td>
-                <td>
+                <td className={styles.bed}>{p.bed}</td>
+                <td className={styles.arrived}>
+                  <span className={styles.cellLabel}>Arrived </span>
+                  {p.arrived}
+                </td>
+                <td className={styles.reason}>{p.reason}</td>
+                <td className={styles.statusCell}>
                   <span className={styles.status}>
                     <img src={STATUS_DOT[p.status]} alt="" width={8} height={8} />
                     {STATUS_LABEL[p.status]}

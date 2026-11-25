@@ -443,12 +443,12 @@
 .toast {
   position: fixed;
   top: 76px;
-  right: 16px;
+  right: max(16px, env(safe-area-inset-right, 0px));
   z-index: 25;
   display: grid;
   grid-template-columns: 8px minmax(0, 1fr);
   gap: 8px;
-  width: 356px;
+  width: min(356px, calc(100vw - 32px));
   padding: 13px 15px 7px;
   border: 1px solid var(--hair-strong);
   border-radius: 12px;
@@ -502,4 +502,137 @@
   align-self: flex-end;
   height: 32px;
   margin-top: 2px;
+}
+
+/* Medium (iPad portrait, main is about 650 to 1000px): the layout stays the
+   same; buttons grow to a 40px touch target. */
+@media (max-width: 1099px) {
+  .secondary,
+  .toastButton {
+    height: 40px;
+  }
+}
+
+/* Narrow (phone): one column. Card actions go under the text, the footer
+   stacks with full width buttons, and the toast sits under the 2 row top bar. */
+@media (max-width: 767px) {
+  .checking {
+    height: auto;
+    min-height: 44px;
+    padding: 12px 14px;
+  }
+
+  .interaction,
+  .decision {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    min-height: 0;
+  }
+
+  .interactionTitle {
+    align-items: flex-start;
+  }
+
+  .pair {
+    white-space: pre-wrap;
+  }
+
+  .cardAction {
+    align-items: center;
+  }
+
+  .cardAction .primary {
+    width: 100%;
+    height: 44px;
+  }
+
+  .done,
+  .doneTight {
+    height: 32px;
+    margin-right: 0;
+    white-space: normal;
+  }
+
+  .banner {
+    height: auto;
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .columns > .card {
+    min-height: 0;
+  }
+
+  .compareBottom {
+    padding-bottom: 15px;
+  }
+
+  .med {
+    flex-wrap: wrap;
+    gap: 0 12px;
+    height: auto;
+    min-height: 44px;
+    padding: 6px 0;
+  }
+
+  .medName {
+    min-width: 0;
+  }
+
+  /* Keep the 24px icon box but give it a 40px hit area. */
+  .info {
+    position: relative;
+  }
+
+  .info::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+
+  .planItem {
+    grid-template-columns: 16px minmax(0, 1fr);
+    row-gap: 4px;
+  }
+
+  .planMeta {
+    grid-column: 2;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .footerActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footerActions .primary,
+  .footerActions .secondary {
+    width: 100%;
+    height: 44px;
+  }
+
+  .toast {
+    top: calc(108px + env(safe-area-inset-top, 0px));
+    right: max(16px, env(safe-area-inset-right, 0px));
+    left: max(16px, env(safe-area-inset-left, 0px));
+    width: auto;
+    max-height: calc(100dvh - 108px - var(--tabbar-h) - 24px);
+    overflow-y: auto;
+  }
+
+  .toastButton {
+    height: 44px;
+    padding: 0 20px;
+  }
 }

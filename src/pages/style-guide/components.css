@@ -486,14 +486,16 @@
 /* Modal dialog: blocks the screen until the nurse reviews and saves. */
 .cf-scrim {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   padding: 24px;
   background: color-mix(in srgb, var(--scrim) 16%, transparent);
 }
 
 .cf-dialog {
-  width: 560px;
-  max-width: 100%;
+  width: min(560px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
   padding: 24px;
   border-radius: 14px;
   background: var(--bg-card);
@@ -516,7 +518,7 @@
 .cf-sheet {
   display: flex;
   flex-direction: column;
-  width: 360px;
+  width: min(360px, 100%);
   border-left: 1px solid var(--hair-strong);
   background: var(--bg-card);
   box-shadow: var(--shadow-float);
@@ -558,8 +560,7 @@
   display: grid;
   grid-template-columns: 8px minmax(0, 1fr);
   gap: 8px;
-  width: 356px;
-  max-width: 100%;
+  width: min(356px, 100%);
   padding: 13px 15px;
   border: 1px solid var(--hair-strong);
   border-radius: 12px;
@@ -569,8 +570,7 @@
 
 /* Popover: extra detail next to an icon (warning on the visit summary). */
 .cf-popover {
-  width: 300px;
-  max-width: 100%;
+  width: min(300px, 100%);
   padding: 11px;
   border: 1px solid var(--hair-strong);
   border-radius: var(--radius-card);
@@ -582,28 +582,102 @@
 }
 
 /* @section layout */
-/* App frame: top bar, left rail, main content, optional right column. */
+/*
+ * App frame: top bar, rail, and a content area with the main column and an
+ * optional aside. Breakpoints: wide >= 1100px, medium 768-1099px, narrow < 768px.
+ */
 .cf-shell {
   display: grid;
-  grid-template-columns: var(--rail-w) minmax(0, 1fr) auto;
-  grid-template-rows: var(--header-h) minmax(0, 1fr);
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
   grid-template-areas:
-    'top top top'
-    'rail main aside';
-  min-width: 1024px;
+    'top top'
+    'rail content';
   height: 100dvh;
 }
 
+.cf-shell-content {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--aside-w);
+  min-height: 0;
+}
+
 .cf-shell-main {
-  grid-area: main;
+  min-width: 0;
   overflow-y: auto;
-  padding: 20px 24px 96px;
+  padding: 20px var(--page-pad-x) 96px;
 }
 
 .cf-shell-aside {
-  grid-area: aside;
-  width: 328px;
   border-left: 1px solid var(--hair-strong);
+  overflow-y: auto;
+}
+
+/* Medium: icon rail; the aside stacks under the main column. */
+@media (max-width: 1099px) {
+  .cf-shell {
+    grid-template-columns: var(--rail-w-compact) minmax(0, 1fr);
+  }
+
+  .cf-shell-content {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .cf-shell-aside {
+    border-top: 1px solid var(--hair-strong);
+    border-left: 0;
+  }
+}
+
+/* Narrow: the rail moves to the bottom as a tab bar; side padding is 16px. */
+@media (max-width: 767px) {
+  :root {
+    --page-pad-x: 16px;
+  }
+
+  .cf-shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'top'
+      'content'
+      'rail';
+  }
+}
+
+/* Bottom tab bar (narrow screens): icon above a short label, 64px tall. */
+.cf-tabbar {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 8px env(safe-area-inset-bottom, 0px);
+  background: var(--rail);
+}
+
+.cf-tabbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: var(--tabbar-h);
+  border: 0;
+  background: transparent;
+  color: var(--rail-text);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cf-tabbar-item[aria-current='page'] {
+  box-shadow: inset 0 2px 0 var(--rail-strong);
+  color: var(--rail-strong);
 }
 
 .cf-page-title {

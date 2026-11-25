@@ -21,7 +21,8 @@ The style guide defines the look of the CareFlow MVP, a tablet app that helps em
 | Logo | White cross on a 20px teal tile (5px corners) + "CareFlow" in Inter 15/600. Shows "Patient record" inside a patient. |
 | Color | Background #fbfaf5, cards #ffffff, text #0b1f1c, sidebar #096258, primary buttons #08594f, brand teal #00695e, mint #d5f0e4 (success), peach #fdebdd (warnings). Status: coral #cf4318 waiting, teal in progress, amber #9a6410 awaiting review, green #0b7f71 done. All colors are CSS tokens. |
 | Typography | Inter (variable). Sizes 26, 20, 18, 16, 14, 13.5 (body), 13, 12. Weights 400 for reading, 500 for titles and buttons. |
-| Layout | iPad landscape 1194 x 834 (min 1024px). 64px top bar, 196px left rail, main content, optional 328px right column. |
+| Layout | Designed for iPad landscape (1194 x 834): 64px top bar, 196px left rail, main content, optional 328px right column. |
+| Responsive | Wide 1100px and up: as designed. Medium 768 to 1099px (iPad portrait): 72px icon rail, right column moves under the content. Narrow under 768px (phone): bottom tab bar, two-row top bar, tables become cards, Companion opens full screen. |
 | Spacing | Steps of 4: 4, 8, 12, 16, 20, 24px. Radius 8px buttons, 10px cards, 14px dialogs. |
 
 ## UI elements

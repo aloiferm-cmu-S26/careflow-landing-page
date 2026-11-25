@@ -38,25 +38,27 @@ export function TopBar({ variant }: { variant: ShellVariant }) {
             <p className={styles.patientId}>Patient ID {patient.id}</p>
             <p className={styles.sub}>Emergency department</p>
           </div>
-          {state.alex.allergies.map((a) => (
-            <span key={a} className={styles.allergy}>
-              <img src={allergyIcon} alt="" width={14} height={14} />
-              Allergy: {a}
-            </span>
-          ))}
-          <p className={styles.identity}>
-            {state.alex.identityConfirmed ? (
-              <>
-                <img src={checkIcon} alt="" width={16} height={16} />
-                Identity confirmed
-              </>
-            ) : (
-              <>
-                <span className={styles.pendingDot} aria-hidden="true" />
-                Identity not confirmed
-              </>
-            )}
-          </p>
+          <div className={styles.facts}>
+            {state.alex.allergies.map((a) => (
+              <span key={a} className={styles.allergy}>
+                <img src={allergyIcon} alt="" width={14} height={14} />
+                Allergy: {a}
+              </span>
+            ))}
+            <p className={styles.identity}>
+              {state.alex.identityConfirmed ? (
+                <>
+                  <img src={checkIcon} alt="" width={16} height={16} />
+                  Identity confirmed
+                </>
+              ) : (
+                <>
+                  <span className={styles.pendingDot} aria-hidden="true" />
+                  Identity not confirmed
+                </>
+              )}
+            </p>
+          </div>
         </>
       )}
 

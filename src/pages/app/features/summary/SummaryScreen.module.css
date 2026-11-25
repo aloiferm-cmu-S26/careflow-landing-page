@@ -175,3 +175,67 @@
 .primary:active {
   transform: scale(0.97);
 }
+
+/* Medium (iPad portrait): the three history columns still fit (about 190px
+   each at 768px). Anchor popovers to the item instead of the icon, so a long
+   allergy name that pushes the icon right cannot push the popover off-screen. */
+@media (max-width: 1099px) {
+  .item {
+    position: relative;
+    min-width: 0;
+  }
+
+  .warningAnchor {
+    position: static;
+  }
+
+  /* Keep the hit area around the icon itself, now 44px. */
+  .warningButton {
+    position: relative;
+  }
+
+  .warningButton::before {
+    inset: -15px;
+  }
+
+  .popover {
+    top: 24px;
+    left: 0;
+  }
+}
+
+/* Narrow (phone): everything stacks into one column. */
+@media (max-width: 767px) {
+  .cardHeader {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    height: auto;
+    min-height: 40px;
+    padding-bottom: 10px;
+  }
+
+  .visitRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .historyGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .historyCard {
+    padding-bottom: 20px;
+  }
+
+  .popover {
+    box-sizing: border-box;
+    width: min(300px, calc(100vw - 32px));
+    max-width: 100%;
+  }
+
+  .primary {
+    width: 100%;
+    height: 44px;
+  }
+}

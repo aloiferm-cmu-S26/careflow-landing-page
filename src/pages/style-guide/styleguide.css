@@ -118,6 +118,7 @@
 
 .sg-section {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   padding: 40px 0;
   border-bottom: 1px solid var(--hair);
@@ -168,6 +169,7 @@
 
 .sg-demo-row {
   display: flex;
+  min-width: 0;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
@@ -384,6 +386,7 @@
 }
 
 .sg-scroll {
+  position: relative;
   overflow-x: auto;
 }
 
@@ -480,4 +483,80 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 4px;
   }
+}
+
+.sg-breakpoints {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.sg-breakpoints figure {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  justify-items: center;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.sg-bp {
+  display: grid;
+  gap: 3px;
+  padding: 6px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 10px;
+  background: var(--bg-card);
+}
+
+.sg-bp span {
+  border-radius: 3px;
+  background: var(--bg-soft);
+}
+
+.sg-bp .sg-bp-top {
+  grid-area: top;
+  border: 1px solid var(--hair-strong);
+  background: var(--bg);
+}
+
+.sg-bp .sg-bp-rail {
+  grid-area: rail;
+  background: var(--rail);
+}
+
+.sg-bp .sg-bp-main {
+  grid-area: main;
+  border: 1px dashed var(--hair-strong);
+  background: transparent;
+}
+
+.sg-bp .sg-bp-aside {
+  grid-area: aside;
+  background: var(--mint);
+}
+
+.sg-bp-wide {
+  grid-template: 'top top top' 12px 'rail main aside' 72px / 22px 1fr 34px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.sg-bp-medium {
+  grid-template: 'top top' 12px 'rail main' 58px 'rail aside' 30px / 10px 1fr;
+  width: 70%;
+  max-width: 130px;
+}
+
+.sg-bp-narrow {
+  grid-template: 'top' 18px 'main' 1fr 'rail' 12px / 1fr;
+  width: 40%;
+  max-width: 70px;
+  height: 120px;
+}
+
+/* The teal tile sits on the teal-green rail here, so outline it. */
+.sg-brand .cf-logo-tile {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 45%);
 }

@@ -16,20 +16,26 @@ interface AppShellProps {
 }
 
 /**
- * The frame every screen sits in: top bar, dark workspace rail, main content,
- * the floating "Ask Companion" button and the Companion side panel.
+ * The frame every screen sits in: top bar, workspace rail, main content, the
+ * floating "Ask Companion" button and the Companion side panel.
+ *
+ * Responsive (breakpoints in app.css): wide screens show the full rail and an
+ * aside column; medium screens use an icon rail and stack the aside under the
+ * main content; narrow screens move the rail to a bottom tab bar.
  */
 export function AppShell({ variant, children, aside }: AppShellProps) {
   const { state, dispatch } = useAppStore()
 
   return (
-    <div className={styles.shell}>
+    <div className={styles.shell} data-variant={variant}>
       <TopBar variant={variant} />
       <Rail variant={variant} />
-      <main className={styles.main} id="main">
-        {children}
-      </main>
-      {aside ? <aside className={styles.aside}>{aside}</aside> : null}
+      <div className={aside ? `${styles.content} ${styles.withAside}` : styles.content}>
+        <main className={styles.main} id="main">
+          {children}
+        </main>
+        {aside ? <aside className={styles.aside}>{aside}</aside> : null}
+      </div>
 
       {state.companion === 'closed' ? (
         <button
@@ -39,7 +45,7 @@ export function AppShell({ variant, children, aside }: AppShellProps) {
           onClick={() => dispatch({ type: 'setCompanion', companion: 'open' })}
         >
           <img src={chatIcon} alt="" width={20} height={20} />
-          Ask Companion
+          <span className={styles.askLabel}>Ask Companion</span>
         </button>
       ) : null}
 

@@ -34,8 +34,18 @@
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
+  /*
+   * Breakpoints (used as literal values in @media queries):
+   *   wide   >= 1100px  desktop, iPad landscape: full rail, aside column
+   *   medium  768-1099  iPad portrait: icon rail, aside stacks under main
+   *   narrow  < 768px   phone: bottom tab bar, compact top bar, stacked tables
+   */
   --header-h: 64px;
   --rail-w: 196px;
+  --rail-w-compact: 72px;
+  --tabbar-h: 64px;
+  --aside-w: 328px;
+  --page-pad-x: 24px;
   --radius-card: 10px;
   --radius-button: 8px;
   /* Base color for modal backdrops and shadows. */
@@ -47,6 +57,16 @@ html,
 body,
 #root {
   height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-pad-x: 16px;
+  }
 }
 
 body {

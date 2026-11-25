@@ -178,3 +178,64 @@
   flex: none;
   gap: 8px;
 }
+
+/* Medium and narrow: empty cards shrink so the conversation, which now sits
+   under the cards, is reachable without scrolling past five blank boxes. */
+@media (max-width: 1099px) {
+  .card[data-state='hidden'] {
+    min-height: 0;
+  }
+}
+
+/* Narrow: actions leave the absolute corner and flow under the text so they
+   never cover the meta line; rows wrap and buttons get 44px targets. */
+@media (max-width: 767px) {
+  .card {
+    min-height: 0;
+  }
+
+  .head {
+    flex-wrap: wrap;
+  }
+
+  .text {
+    overflow-wrap: anywhere;
+  }
+
+  .meta {
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .actions,
+  .actionsConfirmed {
+    position: static;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-top: 12px;
+  }
+
+  .actions > button {
+    flex: 1 1 120px;
+  }
+
+  .primary,
+  .secondary {
+    height: 44px;
+  }
+
+  .editFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .editActions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .editActions > button {
+    flex: 1 1 120px;
+  }
+}

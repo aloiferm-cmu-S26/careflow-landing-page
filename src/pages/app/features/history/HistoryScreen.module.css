@@ -254,7 +254,10 @@
 
 .checkbox img {
   position: absolute;
-  inset: 4px;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+  margin: auto;
   pointer-events: none;
 }
 
@@ -373,5 +376,230 @@
   from {
     opacity: 0;
     transform: scale(0.97);
+  }
+}
+
+/*
+ * Responsive. Wide (>= 1100px) is the Figma design above and stays as is.
+ * Medium (768-1099px): banners wrap instead of cutting text, and checkboxes
+ * get a 40px hit area (negative margins keep the 16px square where it was).
+ */
+@media (max-width: 1099px) {
+  .banner {
+    height: auto;
+    min-height: 44px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .bannerWithAction {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .bannerText {
+    white-space: normal;
+  }
+
+  .banner img {
+    flex: none;
+  }
+
+  .checkbox {
+    width: 40px;
+    height: 40px;
+    margin: -8px -12px -8px -8px;
+  }
+
+  .modalRow .checkbox {
+    margin: -8px -4px -8px -12px;
+  }
+}
+
+/*
+ * Narrow (< 768px, down to 360px): rows stack (name, then source and date as
+ * a meta line, control at the right), the header button may wrap under the
+ * title, and the review modal fits the screen with internal scroll.
+ */
+@media (max-width: 767px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header > div {
+    min-width: 0;
+  }
+
+  .primary,
+  .secondary {
+    height: 44px;
+  }
+
+  .empty {
+    height: auto;
+    min-height: 400px;
+    padding: 32px 16px 24px;
+  }
+
+  .emptyTitle {
+    font-size: 17px;
+  }
+
+  .empty .primary {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .bannerWithAction {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+  }
+
+  .bannerWithAction .bannerText {
+    flex: 1 1 0;
+  }
+
+  .bannerWithAction .chatButton {
+    flex: 1 1 100%;
+    margin-left: 0;
+  }
+
+  .sectionHeader {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 40px;
+    padding-bottom: 6px;
+  }
+
+  .rows {
+    padding: 0 14px;
+  }
+
+  .row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'name name control'
+      'source updated control';
+    column-gap: 6px;
+    row-gap: 3px;
+    height: auto;
+    min-height: 60px;
+    padding: 10px 0;
+  }
+
+  .row .name {
+    grid-area: name;
+    min-width: 0;
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
+  .row .source {
+    grid-area: source;
+  }
+
+  .row .updated {
+    grid-area: updated;
+    min-width: 0;
+  }
+
+  .row .meta {
+    font-size: 12.5px;
+    white-space: normal;
+  }
+
+  .row .updated::before {
+    content: '· ';
+    content: '· ' / '';
+  }
+
+  /* The date and the control become grid items of the row. */
+  .metaEnd {
+    display: contents;
+  }
+
+  .metaEnd > :not(.updated) {
+    grid-area: control;
+    align-self: center;
+    justify-self: end;
+    margin-left: 8px;
+  }
+
+  .row .checkbox {
+    width: 44px;
+    height: 44px;
+    margin: -10px -14px -10px -6px;
+  }
+
+  .footer .chatButton {
+    width: 100%;
+  }
+
+  .scrim {
+    padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px))
+      max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  }
+
+  .modal {
+    width: 100%;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    overscroll-behavior: contain;
+    padding: 18px 16px 16px;
+  }
+
+  .modalTitle {
+    font-size: 17px;
+  }
+
+  .modalRow {
+    grid-template-columns: 30px auto minmax(0, 1fr);
+    grid-template-areas:
+      'check name name'
+      'check category source';
+    column-gap: 6px;
+    row-gap: 2px;
+    height: auto;
+    min-height: 52px;
+    padding: 8px 0;
+  }
+
+  .modalRow .checkbox {
+    grid-area: check;
+    align-self: center;
+    width: 44px;
+    height: 44px;
+    margin: -10px 0 -10px -14px;
+  }
+
+  .modalName {
+    grid-area: name;
+    min-width: 0;
+  }
+
+  .modalCategory {
+    grid-area: category;
+  }
+
+  .modalSource {
+    grid-area: source;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .modalSource::before {
+    content: '· ';
+    content: '· ' / '';
+  }
+
+  .modalActions {
+    flex-direction: column-reverse;
+    margin-top: 20px;
+  }
+
+  .modalActions > button {
+    width: 100%;
   }
 }
