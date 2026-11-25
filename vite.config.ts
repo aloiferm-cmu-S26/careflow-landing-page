@@ -15,6 +15,13 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    rollupOptions: {
+      // The landing page lives at / and the clickable MVP prototype at /app/.
+      input: {
+        home: resolve(root, 'index.html'),
+        app: resolve(root, 'app/index.html'),
+      },
+    },
   },
   test: {
     environment: 'jsdom',

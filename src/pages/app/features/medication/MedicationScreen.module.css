@@ -1,0 +1,505 @@
+/* Figma frames 15 to 20, "Medication Review". Content starts at x 220, y 84. */
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* Slot for the check status / result card. Keeps the cards below in place. */
+.result {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-height: 132px;
+  margin-top: 18px;
+}
+
+.checking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 13.5px;
+  line-height: 20px;
+  color: var(--text-3);
+}
+
+.loadingDots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.loadingDots img {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.loadingDots img:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.loadingDots img:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  40% {
+    opacity: 1;
+  }
+}
+
+/* Cards */
+
+.card {
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  padding: 0 15px;
+}
+
+.cardTitle {
+  height: 43px;
+  padding-top: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+/* Interaction and decision cards share a two-column layout: text, then action. */
+.interaction,
+.decision {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  min-height: 132px;
+  padding: 15px;
+  box-sizing: border-box;
+  animation: enter 220ms var(--ease-out);
+}
+
+.interaction {
+  border-color: var(--amber);
+  background: var(--peach);
+}
+
+.decision {
+  padding-top: 16px;
+  border-color: color-mix(in srgb, var(--teal) 50%, transparent);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.cardBody {
+  min-width: 0;
+}
+
+.cardAction {
+  display: flex;
+  align-items: flex-end;
+}
+
+.interactionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.iconLarge {
+  margin: -4px 0;
+}
+
+.pair {
+  margin-top: 7px;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: pre;
+}
+
+.explain {
+  max-width: 560px;
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-2);
+}
+
+.source {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* Underlined inline buttons, with a 24px tall click target. */
+.textLink {
+  padding: 4px 2px;
+  margin: -4px -2px;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  line-height: normal;
+  color: var(--text);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.source .textLink {
+  margin-left: 10px;
+}
+
+.primary {
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background: var(--ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+
+.primary:active,
+.secondary:active {
+  transform: scale(0.97);
+}
+
+.secondary {
+  height: 32px;
+  padding: 0 15px;
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--radius-button);
+  background: var(--bg-card);
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+
+.done {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  margin-right: 12px;
+  font-size: 13px;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.doneTight {
+  margin-right: -7px;
+}
+
+.decisionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.decisionMeta {
+  margin-top: 9px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.decisionText {
+  max-width: 640px;
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  margin-top: -8px;
+  padding: 0 14px;
+  border-radius: var(--radius-button);
+  background: var(--mint);
+  font-size: 13.5px;
+  animation: enter 220ms var(--ease-out);
+}
+
+/* Current medications + proposed medication */
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 560fr) minmax(0, 374fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.columns > .card {
+  min-height: 232px;
+  box-sizing: border-box;
+}
+
+.meds {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--hair);
+  list-style: none;
+}
+
+.med {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 40px;
+  border-top: 1px solid var(--hair);
+  box-sizing: border-box;
+}
+
+.medName {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.medFlagged {
+  font-weight: 500;
+}
+
+.medWarning {
+  margin-left: 4px;
+}
+
+.medSource {
+  font-size: 13px;
+  color: var(--text-3);
+  text-align: right;
+}
+
+.historyLabel {
+  margin-top: 13px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.historyValue {
+  margin-top: 5px;
+  font-size: 13.5px;
+}
+
+.info {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.info:hover {
+  background: var(--bg-soft);
+}
+
+.proposed {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 7px 0 11px;
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--radius-button);
+  background: var(--bg-card);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.prefilled {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.hairline {
+  height: 1px;
+  margin: 16px 0 0;
+  border: 0;
+  background: var(--hair);
+}
+
+.compare {
+  margin-top: 13px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.compareBottom {
+  margin-top: auto;
+  padding-bottom: 27px;
+}
+
+/* Treatment plan (frame 20) */
+
+.plan {
+  margin-top: 16px;
+  padding-bottom: 14px;
+  animation: enter 220ms var(--ease-out);
+}
+
+.planItem {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+  padding-top: 7px;
+  border-top: 1px solid var(--hair);
+}
+
+.planItem > img {
+  margin-top: 4px;
+}
+
+.planName {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.planNote {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.planMeta {
+  margin-top: 5px;
+  font-size: 13px;
+  color: var(--text-3);
+  text-align: right;
+}
+
+/* Footer */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.footerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Notification toast under the bell (frame 18) */
+
+.toast {
+  position: fixed;
+  top: 76px;
+  right: 16px;
+  z-index: 25;
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  gap: 8px;
+  width: 356px;
+  padding: 13px 15px 7px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 12px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-float);
+  box-sizing: border-box;
+  animation: toast-in 240ms var(--ease-out);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+
+.toastDot {
+  margin-top: 6px;
+}
+
+.toastBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.toastHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.toastTitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.toastTime {
+  font-size: 12px;
+  color: var(--text-4);
+}
+
+.toastText {
+  margin-top: 7px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-2);
+}
+
+.toastButton {
+  align-self: flex-end;
+  height: 32px;
+  margin-top: 2px;
+}

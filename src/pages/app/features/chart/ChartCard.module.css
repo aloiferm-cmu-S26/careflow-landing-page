@@ -1,0 +1,180 @@
+.card {
+  position: relative;
+  min-height: 150px;
+  padding: 13px 15px 12px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  transition:
+    background-color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out);
+}
+
+.card:not([data-state='hidden']) {
+  background: var(--bg-card);
+}
+
+.card[data-state='draft'],
+.card[data-state='editing'] {
+  border-color: rgb(11 31 28 / 32%);
+}
+
+.card[data-state='draft'] {
+  animation: card-in 280ms var(--ease-out);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0.4;
+    transform: translateY(4px);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 17px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.draftTag,
+.editingTag,
+.confirmedTag {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.draftTag {
+  color: var(--text-4);
+}
+
+.editingTag,
+.confirmedTag {
+  color: var(--green);
+}
+
+.confirmedTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.empty {
+  margin-top: 11px;
+  font-size: 13px;
+  color: var(--text-4);
+}
+
+.text {
+  margin-top: 11px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.meta {
+  margin-top: 28px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  font-size: 12px;
+  color: var(--amber);
+}
+
+.actions,
+.actionsConfirmed {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.actions {
+  bottom: 12px;
+}
+
+.actionsConfirmed {
+  top: 77px;
+}
+
+.primary,
+.secondary {
+  height: 40px;
+  border-radius: var(--radius-button);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+
+.primary {
+  padding: 0 16px;
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+}
+
+.secondary {
+  padding: 0 15px;
+  border: 1px solid var(--hair-strong);
+  background: var(--bg-card);
+}
+
+.primary:active:not(:disabled),
+.secondary:active {
+  transform: scale(0.97);
+}
+
+.primary:disabled {
+  background: rgb(11 31 28 / 6%);
+  color: var(--text-4);
+  cursor: default;
+}
+
+.editor {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 9px;
+  padding: 12px 9px;
+  border: 1.5px solid var(--teal);
+  border-radius: var(--radius-button);
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  resize: none;
+  field-sizing: content;
+}
+
+.editor:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(0 105 94 / 14%);
+}
+
+.editFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.hint {
+  min-width: 0;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.editActions {
+  display: flex;
+  flex: none;
+  gap: 8px;
+}

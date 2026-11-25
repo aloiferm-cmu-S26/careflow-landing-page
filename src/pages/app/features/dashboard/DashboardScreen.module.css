@@ -1,0 +1,186 @@
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.stat {
+  display: grid;
+  gap: 15px;
+  height: 84px;
+  padding: 11px 15px 0;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  align-content: start;
+}
+
+.statValue {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 18px;
+  background: var(--bg-card);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 140ms var(--ease-out),
+    color 140ms var(--ease-out);
+}
+
+.filterCount {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-4);
+}
+
+.filter[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.filter[aria-pressed='true'] .filterCount {
+  color: rgb(255 255 255 / 70%);
+}
+
+.tableCard {
+  margin-top: 16px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+
+.table th {
+  height: 34px;
+  padding: 0 0 0 15px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-4);
+  text-align: left;
+}
+
+.table td {
+  height: 64px;
+  padding: 0 0 0 15px;
+  border-top: 1px solid var(--hair);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.table th:nth-child(1) {
+  width: 29%;
+}
+
+.table th:nth-child(2) {
+  width: 9.5%;
+}
+
+.table th:nth-child(3) {
+  width: 6.3%;
+}
+
+.table th:nth-child(4) {
+  width: 23.6%;
+}
+
+.name {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.pid {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.actionCell {
+  padding-right: 15px !important;
+  text-align: right;
+}
+
+.open {
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background: var(--ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+
+.open:active {
+  transform: scale(0.97);
+}
+
+.showing {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

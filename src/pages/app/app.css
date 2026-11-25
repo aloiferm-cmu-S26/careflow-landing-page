@@ -1,0 +1,71 @@
+/*
+ * Tokens for the clickable MVP prototype. Values come straight from the Figma
+ * file "CareFlow MVP prototype", designed at 1194 x 834 (iPad landscape).
+ */
+:root {
+  color-scheme: light;
+
+  --bg: #fbfaf5;
+  --bg-card: #ffffff;
+  --bg-soft: #f3f2ec;
+  --hair: rgb(11 31 28 / 9%);
+  --hair-strong: rgb(11 31 28 / 16%);
+  --text: #0b1f1c;
+  --text-2: #33473f;
+  --text-3: #4c615a;
+  --text-4: #8a9a94;
+  --rail: #0b1f1b;
+  --rail-text: rgb(255 255 255 / 76%);
+  --rail-muted: rgb(255 255 255 / 46%);
+  --rail-active: rgb(255 255 255 / 9%);
+  --ink: #0b1f1c;
+  --mint: #d5f0e4;
+  --peach: #fdebdd;
+  --teal: #00695e;
+  --green: #0b7f71;
+  --amber: #9a6410;
+  --red: #b93d24;
+  --coral: #cf4318;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --header-h: 64px;
+  --rail-w: 196px;
+  --radius-card: 10px;
+  --radius-button: 8px;
+  --shadow-float: 0 10px 16px rgb(10 31 28 / 18%);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: normal;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
