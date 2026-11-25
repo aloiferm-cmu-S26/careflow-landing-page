@@ -14,9 +14,9 @@
   --text-2: #33473f;
   --text-3: #4c615a;
   --text-4: #8a9a94;
-  --rail: #0b1f1b;
-  --rail-text: rgb(255 255 255 / 76%);
-  --rail-muted: rgb(255 255 255 / 46%);
+  --rail: #096258;
+  --rail-text: rgb(255 255 255 / 86%);
+  --rail-muted: rgb(255 255 255 / 72%);
   --rail-active: rgb(255 255 255 / 9%);
   /* Active nav label and avatar initials on the rail. */
   --rail-strong: #ffffff;
