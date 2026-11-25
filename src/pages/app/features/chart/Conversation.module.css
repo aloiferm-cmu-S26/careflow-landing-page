@@ -83,7 +83,11 @@
   justify-content: center;
   margin-top: auto;
   padding: 16px 0 76px;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 0%, transparent), var(--bg) 16px);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg) 0%, transparent),
+    var(--bg) 16px
+  );
 }
 
 .start {
